@@ -16,10 +16,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
+        android:paddingHorizontal="@dimen/padding"
         android:onClick="@{() -> handler.onClickItem(item)}"
         android:onLongClick="@{() -> handler.onLongClickItem(item)}"
-        android:paddingVertical="8dp">
+        android:paddingVertical="@dimen/padding_small">
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/contentCheckBox"
@@ -28,8 +28,8 @@
             android:checked="@{item.done}"
             android:text="@{item.content}"
             android:onCheckedChanged="@{(button, check) -> handler.onCheckedItem(item, check)}"
-            android:textStyle="bold"
             android:textSize="18sp"
+            android:textAppearance="@style/TextAppearance.App.Large.Bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -40,9 +40,9 @@
             android:layout_height="wrap_content"
             android:hint="없음"
             android:text="@{item.memo}"
-            android:textColorHint="#CCCCCC"
+            android:textAppearance="@style/TextAppearance.App.Small"
             android:drawableStart="@drawable/baseline_comment_24"
-            android:drawablePadding="8dp"
+            android:drawablePadding="@dimen/padding_small"
             android:drawableTint="#CCCCCC"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
