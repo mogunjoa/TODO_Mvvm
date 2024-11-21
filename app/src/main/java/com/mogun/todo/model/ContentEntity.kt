@@ -3,6 +3,7 @@ package com.mogun.todo.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "Content")
 data class ContentEntity (
@@ -17,4 +18,4 @@ data class ContentEntity (
 
     @ColumnInfo
     var isDone: Boolean = false,
-)
+): Serializable

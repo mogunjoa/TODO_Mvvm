@@ -7,6 +7,7 @@ import com.mogun.todo.model.ContentEntity
 
 class ContentViewHolder (
     private val binding: ItemContentBinding,
+    private val handler: MainActivity.Handler
 ): RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: ContentEntity) {

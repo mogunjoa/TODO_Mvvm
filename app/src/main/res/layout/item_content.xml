@@ -7,12 +7,17 @@
             name="item"
             type="com.mogun.todo.model.ContentEntity" />
 
+        <variable
+            name="handler"
+            type="com.mogun.todo.MainActivity.Handler" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="16dp"
+        android:onClick="@{() -> handler.onClickItem(item)}"
         android:paddingVertical="8dp">
 
         <androidx.appcompat.widget.AppCompatCheckBox
@@ -21,6 +26,7 @@
             android:layout_height="wrap_content"
             android:checked="@{item.done}"
             android:text="@{item.content}"
+            android:onCheckedChanged="@{(button, check) -> handler.onCheckedItem(item)}"
             android:textStyle="bold"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

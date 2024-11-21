@@ -8,7 +8,11 @@ import javax.inject.Inject
 class ContentRespositoryImpl @Inject constructor(private val contentDao: ContentDao): ContentRepository {
     override fun loadList(): Flow<List<ContentEntity>> = contentDao.selectAll()
 
-    override suspend fun insert(content: ContentEntity) {
-        contentDao.insert(content)
+    override suspend fun insert(item: ContentEntity) {
+        contentDao.insert(item)
+    }
+
+    override suspend fun modify(item: ContentEntity) {
+        contentDao.insert(item)
     }
 }

@@ -2,10 +2,11 @@ package com.mogun.todo
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import com.mogun.todo.MainActivity.Handler
 import com.mogun.todo.databinding.ItemContentBinding
 import com.mogun.todo.model.ContentEntity
 
-class ListAdapter: androidx.recyclerview.widget.ListAdapter<ContentEntity, ContentViewHolder>(diffUtil) {
+class ListAdapter(private val handler: Handler): androidx.recyclerview.widget.ListAdapter<ContentEntity, ContentViewHolder>(diffUtil) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -14,8 +15,9 @@ class ListAdapter: androidx.recyclerview.widget.ListAdapter<ContentEntity, Conte
             ItemContentBinding.inflate(
                 android.view.LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false,
+            ),
+            handler
         )
     }
 
