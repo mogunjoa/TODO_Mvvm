@@ -1,22 +1,32 @@
 package com.mogun.todo
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.mogun.todo.databinding.ActivityInputBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InputActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityInputBinding
+    private val viewModel: InputViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInputBinding.inflate(layoutInflater).apply {
             setContentView(root)
-            view = this@InputActivity
+            lifecycleOwner = this@InputActivity
+            viewModel = this@InputActivity.viewModel
         }
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        viewModel.doneEvent.observe(this) {
+            Toast.makeText(this, "입력 완료", Toast.LENGTH_SHORT).show()
+            finish()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
